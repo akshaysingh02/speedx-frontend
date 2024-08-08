@@ -29,6 +29,10 @@
   font-size: 28px;
   font-weight: 600;
 }
+h2 {
+    font-size: 38px;
+    margin-bottom: 32px;
+  }
 
 .loaderContainer {
   width: 100%;
@@ -36,5 +40,47 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   padding: 40px;
+}
+
+.animationWrapper{
+    width: 250px;
+    height: auto;
+    padding-left: 30px;
+}
+
+h3{
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: -30px;
+}
+
+
+@media screen and (max-width: 600px) {
+    .blockWrapper{
+        grid-template-columns: auto auto;
+    }
+
+    .dataBox{
+        padding: 22px 16px;
+    }
+
+    .boxHeading {
+        font-size: 16px;
+        font-weight: 400;
+      }
+
+      .dataValue {
+        font-size: 20px;
+        font-weight: 600;
+      }
+      h2 {
+          font-size: 28px;
+          margin-bottom: 32px;
+    }
+    .resultWrapper{
+        margin-top: 60px;
+    }
 }

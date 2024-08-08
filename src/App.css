@@ -31,9 +31,15 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 70px;
+    z-index: 10;
 }
 .logoMain{
     width: 160px;
+    z-index: 10;
+}
+
+.purpleCircle{
+    z-index: 1;
 }
 
 .circleWrapper-1{
@@ -55,6 +61,14 @@
     z-index: 0;
 }
 
-@media screen and (min-width: 480px) {
-    
+@media screen and (max-width: 600px) {
+    .mainWrapper{
+        padding: 38px 20px;
+    }
+    .logoMain{
+        width: 130px;
+    }
+    .logoWrapper{
+        margin-bottom: 52px;
+    }
 }

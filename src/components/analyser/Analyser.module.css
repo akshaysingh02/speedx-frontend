@@ -10,11 +10,6 @@ h1 {
   margin-bottom: 64px;
 }
 
-h2 {
-  font-size: 38px;
-  margin-bottom: 32px;
-}
-
 form {
   width: 80%;
   margin: 0 auto;
@@ -67,4 +62,34 @@ button:hover{
   margin: 20px auto;
 }
 
+
+@media screen and (max-width: 600px) {
+  h1{
+    font-size: 32px;
+    margin-bottom: 32px;
+  }
+  form{
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+  }
+  input{
+    width: 95%;
+  }
+  button{
+    font-size:16px ;
+  }
+}
+
+@media screen and (max-width: 485px) {
+  form{
+    flex-direction: column;
+  }
+  button {
+    width: 140px;
+    height: 46px;
+    padding: 13px 33px;
+    font-size: 16px;
+  }
+}
 

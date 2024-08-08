@@ -6,17 +6,18 @@ import circle from "./assets/circle_radial.svg";
 function App() {
   return (
     <div className="mainWrapper">
-    <div className="circleContainer">
-    <div className="circleWrapper-1">
-        <img className="purpleCircle" src={circle} alt="decorative" />
-      </div>
-      {/* <div className="circleWrapper-2">
-        <img className="purpleCircle-2" src={circle} alt="decorative" />
-      </div> */}
-    </div>
-      <div className="logoWrapper">
+    <div className="logoWrapper">
         <img className="logoMain" src={mainLogo} />
       </div>
+      <div className="circleContainer">
+        <div className="circleWrapper-1">
+          <img className="purpleCircle" src={circle} alt="decorative" />
+        </div>
+        {/* <div className="circleWrapper-2">
+        <img className="purpleCircle-2" src={circle} alt="decorative" />
+      </div> */}
+      </div>
+      
       <div className="container">
         <Analyser />
       </div>

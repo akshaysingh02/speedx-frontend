@@ -1,36 +1,59 @@
-import React,{useState,useEffect} from 'react'
-import axios from "axios"
-import styles from "./Analyser.module.css"
+import React, { useState } from 'react';
+import axios from 'axios';
+import styles from './Analyser.module.css';
 import Results from '../Results/Results';
 
 export default function Analyser() {
-    const [url, setUrl] = useState('');
+  const [url, setUrl] = useState('');
   const [metrics, setMetrics] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [showResults, setShowResults] = useState(false)
+  const [showResults, setShowResults] = useState(false);
+
+  const formatUrl = (inputUrl) => {
+    let formattedUrl = inputUrl.trim();
+
+    if (formattedUrl.startsWith('www.')) {
+      formattedUrl = formattedUrl.replace('www.', '');
+    }
+
+    if (!formattedUrl.startsWith('http://') && !formattedUrl.startsWith('https://')) {
+      formattedUrl = 'https://' + formattedUrl;
+    }
+
+    return formattedUrl;
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setError(null);
+
+    if (!url) {
+      setError('URL field cannot be empty');
+      return;
+    }
+
+    const formattedUrl = formatUrl(url);
+
+    setUrl(formattedUrl);
+
     try {
-      setIsLoading(true)
-      setShowResults(true)
-      setError(null)
-      const response = await axios.post('http://localhost:3001/api/metrics/analyse', { url });
-      setMetrics(response.data);
-      setIsLoading(false)
+      setIsLoading(true);
+      setShowResults(true);
       setError(null);
+      const response = await axios.post('http://localhost:3001/api/metrics/analyse', { url: formattedUrl });
+      setMetrics(response.data);
+      setIsLoading(false);
     } catch (err) {
       setError('An error occurred while analyzing the URL');
-      setShowResults(false)
+      setShowResults(false);
       setMetrics(null);
     }
   };
 
-
   return (
-    <div className={styles.analyserWrapper}>  
-        <h1>speedX Website<br/>Performance Analyzer</h1>
+    <div className={styles.analyserWrapper}>
+      <h1>speedX Website<br/>Performance Analyzer</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -45,5 +68,5 @@ export default function Analyser() {
         <Results metrics={metrics} isLoading={isLoading} />
       )}
     </div>
-  )
+  );
 }
